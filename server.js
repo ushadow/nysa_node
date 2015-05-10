@@ -36,12 +36,19 @@ bs.on('connection', function(client){
 server.listen(9000);
 console.log('HTTP and BinaryJS server started on port 9000');
 
-var client = net.createConnection(12592, function() {
+var client = net.createConnection(12591, function() {
   console.log("Connected to controller server.");
 });
 
 client.on('error', function(e) {
   console.log(e);
+});
+
+client.on('data', function(data) {
+  message = JOSON.parse(data);
+  if (message.response == 'ok') {
+    console.log(message.uri);
+  }
 });
 
 // Websocket server
