@@ -1,19 +1,26 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <script src="http://cdn.binaryjs.com/0/binary.js"></script>
-  <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
-  <script src="client.js"></script>
+  <head>
+    <title>Nysa web control</title>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+    <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+    <script src="http://cdn.binaryjs.com/0/binary.js"></script>
+    <script src="client.js"></script>
+    <link rel="stylesheet" href="client.css">
 </head>
 <body style="background-size:cover">
+<main>
+  <h1>Nysa Web Control</h1>
+  <div>
+    <label>GPIO 0</label>
+    <input type="checkbox" id="gpio0">
+  </div>
   <div>
     <label>GPIO 1</label>
-    <button id="gpio1">Enable</button>
+    <input type="checkbox" id="gpio1">
   </div>
-  <div>
-    <label>GPIO 2</label>
-    <button id="gpio2">Enable</button>
-  </div>
+  <canvas></canvas>
 
   <input type="file" id="fileinput" accept="image/*" capture="camera" />
 
@@ -44,5 +51,6 @@
     }, false);
 
   </script>
+</main>
 </body>
 </html>
