@@ -1,0 +1,15 @@
+{
+  "author": "Ying Yin (http://people.csail.mit.edu/yingyin)",
+  "name": "nysa_node",
+  "description": "Node.js server for Nysa.",
+  "version": "0.0.1",
+  "engines": {
+    "node": ">=0.10.20"
+  },
+  "dependencies": {
+    "streamws": ">=0.1.1",
+    "binarypack": ">=0.0.4",
+    "streamers": ">=0.1.0",
+    "binaryjs": ">=0.2.1"
+  }
+}

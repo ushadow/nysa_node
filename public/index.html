@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script src="http://cdn.binaryjs.com/0/binary.js"></script>
+  <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+  <script src="client.js"></script>
+</head>
+<body style="background-size:cover">
+  <div>
+    <label>GPIO 1</label>
+    <button id="gpio1">Enable</button>
+  </div>
+  <div>
+    <label>GPIO 2</label>
+    <button id="gpio2">Enable</button>
+  </div>
+
+  <input type="file" id="fileinput" accept="image/*" capture="camera" />
+
+  <script type="text/javascript">
+
+    // connect to the same host this was served from
+    var client = new BinaryClient('ws://' + document.location.host);
+
+    client.on('stream', function(stream, meta){
+
+      // collect stream data
+      var parts = [];
+      stream.on('data', function(data){
+        parts.push(data);
+      });
+
+      // when finished, set it as the background image
+      stream.on('end', function(){
+        var url = (window.URL || window.webkitURL).createObjectURL(new Blob(parts));
+        document.body.style.backgroundImage = 'url(' + url + ')';
+      });
+    });
+
+    // listen for a file being chosen
+    fileinput.addEventListener('change', function(event){
+        var file = event.target.files[0];
+        client.send(file);
+    }, false);
+
+  </script>
+</body>
+</html>
