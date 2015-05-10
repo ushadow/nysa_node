@@ -21,6 +21,9 @@ $(function() {
   controllerConnection = new WebSocket(WS_URI_PREFIX + '8000');
   controllerConnection.onopen = onOpen;
   controllerConnection.onmessage = onMessage;
+  $('#gpio0').button();
+  $('#gpio1').button();
+  $('#video').button();
   $('#gpio0').click(function() {
     console.log('gpio0 clicked.');
     peripherals['gpio'].send(JSON.stringify({command: 'set_value', pin: 0, value: this.checked ? 1 : 0}));
