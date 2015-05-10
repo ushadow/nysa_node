@@ -5,6 +5,7 @@ var peripherals = {};
 function onOpen() {
   console.log('Connection opened.');
   controllerConnection.send(JSON.stringify({command: 'start-server', type: 'gpio'}));
+  controllerConnection.send(JSON.stringify({command: 'start-server', type: 'video_control'}));
 }
 
 function onMessage(event) {
@@ -27,5 +28,8 @@ $(function() {
   $('#gpio1').click(function() {
     console.log('gpio1 clicked.');
     peripherals['gpio'].send(JSON.stringify({command: 'set_value', pin: 1, value: this.checked ? 1 : 0}));
+  });
+  $('#video').click(function() {
+    peripherals['video_control'].send(JSON.stringify({command: this.checked? 'play' : 'stop'}))
   });
 });
